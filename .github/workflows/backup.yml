@@ -10,8 +10,9 @@
 name: Database backup
 
 on:
-  schedule:
-    - cron: '17 7 * * *' # every day, 07:17 UTC (02:17 in Medellín)
+  # schedule disabled: nightly cron turned off. Re-enable with:
+  #   schedule:
+  #     - cron: '17 7 * * *' # every day, 07:17 UTC (02:17 in Medellín)
   workflow_dispatch: {}
 
 permissions:
