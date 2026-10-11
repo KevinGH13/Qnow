@@ -1,0 +1,133 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/schibsted-grotesk';
+
+/*
+ * qnow design tokens — "logbook" direction.
+ * Cool paper, navy ink, and one emerald accent reserved for "now" and what's urgent.
+ */
+@theme {
+  --font-sans: 'Schibsted Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --color-paper: #edf0f3;
+  --color-sheet: #f8f9fb;
+  --color-ink: #1c2433;
+  --color-ink-soft: #5b6576;
+  --color-ink-faint: #8a93a2;
+  --color-rule: #d3d8e0;
+  --color-accent: #0f7b5f;
+  --color-accent-deep: #0b5c47;
+  --color-accent-soft: #cfede3;
+  --color-on-accent: #ffffff;
+  --color-danger: #b42318;
+
+  --text-xs: 0.78rem;
+  --text-sm: 0.875rem;
+  --text-base: 0.94rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.5rem;
+}
+
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    font-size: var(--text-base);
+    line-height: 1.5;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+  ::selection {
+    background: var(--color-accent-soft);
+  }
+  input,
+  textarea,
+  select,
+  button {
+    font: inherit;
+    color: inherit;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Tabular figures keep dates and counts aligned down the timeline. */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Underline-style field: writing on a line, not filling a box. */
+  .field {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--color-rule);
+    padding: 0.35rem 0;
+    transition: border-color 120ms;
+  }
+  .field:hover {
+    border-color: var(--color-ink-faint);
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--color-ink);
+  }
+  .field::placeholder {
+    color: var(--color-ink-faint);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-weight: 550;
+    font-size: var(--text-sm);
+    white-space: nowrap;
+    transition: background-color 120ms, color 120ms;
+    cursor: pointer;
+  }
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+  .btn-primary {
+    background: var(--color-ink);
+    color: var(--color-sheet);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: #2c3850;
+  }
+  /* Button sitting on an accent surface (the "now" band). */
+  .btn-on-accent {
+    background: var(--color-on-accent);
+    color: var(--color-accent-deep);
+  }
+  .btn-on-accent:hover:not(:disabled) {
+    background: var(--color-accent-soft);
+  }
+  .btn-quiet {
+    color: var(--color-ink-soft);
+  }
+  .btn-quiet:hover:not(:disabled) {
+    background: #e2e6eb;
+    color: var(--color-ink);
+  }
+}

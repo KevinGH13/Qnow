@@ -1,0 +1,27 @@
+# Dependencies and builds
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Secrets: never commit real env files
+.env
+.env.*
+!.env.example
+
+# Generated
+qnow-backend/src/generated/
+
+# Vercel / tooling
+.vercel/
+*.log
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+
+# Old hidden copy of the context docs (the real ones live in context/)
+.context/
+
+context/
